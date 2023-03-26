@@ -2,7 +2,7 @@
 # Author: Christophe Pere   #
 # Creation Date: 2023-01-21 #
 # Modified: 2023-01-21      #
-# Version: 0.01             #
+# Version: 0.10             #
 # Project: ML-Hybride       #
 # Sub: Fraud Detection      #
 #############################
@@ -15,6 +15,8 @@ from qiskit_ibm_runtime import QiskitRuntimeService, Session,  Options, Sampler
 from qiskit.utils import algorithm_globals
 from qiskit_machine_learning.algorithms import QSVC
 from qiskit_machine_learning.kernels import FidelityQuantumKernel
+from sklearn.model_selection import cross_validate
+from sklearn.metrics import classification_report
 from sklearn import metrics
 from sklearn.metrics import roc_curve
 from qiskit.primitives import Sampler as Sampler_prim
@@ -287,5 +289,5 @@ def eval_quantum_fs(_bal_acc_: float, _bal_acc_ref_: float, _auc_:float, _auc_re
         _auc_ref_ = _auc_                                            # save best AUC 
                 
     return _bal_acc_ref_, _auc_ref_, results.sort_values(by=[0, 1], ascending=False).iloc[0, :][2], results
-
-
+  
+  
